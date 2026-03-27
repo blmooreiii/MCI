@@ -29,20 +29,10 @@
 
     body, html {
       width: 100%; height: 100%;
-      background-color: var(--bg-dark);
+      background: linear-gradient(135deg, #2b1a2b 0%, #0b0b0b 100%);
       color: var(--text-light);
       font-family: var(--font-body);
-      overflow: hidden; /* Prevent scrolling, full height layout */
-    }
-
-    /* Background Canvas */
-    #spaceCanvas {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      z-index: 0;
-      opacity: 0.6;
-      pointer-events: none;
+      overflow: hidden;
     }
 
     /* Main Container */
@@ -94,15 +84,16 @@
       gap: 2px;
       justify-content: center;
       position: relative;
+      perspective: 1200px;
     }
 
     /* Element Card */
     .element-card {
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 0;
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
+      background: rgba(255, 255, 255, 0.05); /* slightly more visible */
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 4px; /* subtle rounding for glass */
+      backdrop-filter: blur(14px); /* deeper frost */
+      -webkit-backdrop-filter: blur(14px);
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -114,6 +105,9 @@
       opacity: 0;
       transform: scale(0.95);
       cursor: default;
+      box-shadow: 
+        inset 0 0 10px rgba(255, 255, 255, 0.05),
+        0 15px 35px rgba(0, 0, 0, 0.2);
     }
 
     .element-card::before {
@@ -125,7 +119,7 @@
     }
 
     .element-card:hover {
-      transform: scale(1.05); /* subtle hover */
+      transform: scale(1.05);
       background: rgba(255, 255, 255, 0.06);
       border-color: rgba(255, 255, 255, 0.2);
       box-shadow: 0 10px 30px rgba(0,0,0,0.4);
@@ -165,11 +159,12 @@
     }
 
     /* Grid Positioning & Colored Borders */
+    /* Grid Positioning & Colored Borders */
     .el-kn { grid-column: 2; grid-row: 1; border-top: 3px solid var(--jordan-blue); border-bottom: 1px solid rgba(30,149,178,0.2); animation: popIn 0.8s forwards 1s; }
     
     .el-cr { grid-column: 1; grid-row: 2; border-top: 3px solid #dba9a9; border-bottom: 1px solid rgba(219,169,169,0.2); animation: popIn 0.8s forwards 1.2s; }
     
-    /* Center MCFG Element */
+    /* Center MCFG Element (Maintains its own style) */
     .el-mcfg {
       grid-column: 2;
       grid-row: 2;
@@ -181,6 +176,7 @@
 
     .el-mcfg::before {
       background: radial-gradient(circle at center, rgba(97, 64, 81, 0.15), transparent 70%);
+      content: ''; position: absolute; inset: 0; pointer-events: none;
     }
 
     .el-mcfg:hover {
@@ -250,9 +246,6 @@
       70% { opacity: 1; transform: scale(1.05); box-shadow: 0 0 60px var(--eggplant-glow); }
       100% { opacity: 1; transform: scale(1); }
     }
-      70% { opacity: 1; transform: scale(1.18); box-shadow: 0 0 60px var(--eggplant-glow); }
-      100% { opacity: 1; transform: scale(1.15); }
-    }
 
     /* Responsive adjustments */
     @media (max-width: 768px) {
@@ -293,14 +286,12 @@
 </head>
 <body>
 
-  <!-- Background Space Canvas -->
-  <canvas id="spaceCanvas"></canvas>
-
   <div class="container">
     <h1 class="page-title">The Elements of Change</h1>
     <div class="page-subtitle">Marble Ceilings For Good</div>
 
-                <div class="periodic-grid">
+    <!-- Periodic Table -->
+    <div class="periodic-grid">
       
       <!-- Row 1 -->
       <div class="element-card el-kn">
@@ -375,62 +366,5 @@
     </div>
   </div>
 
-  <script>
-    // Subtle Space Particle Background
-    const canvas = document.getElementById('spaceCanvas');
-    const ctx = canvas.getContext('2d');
-
-    let width, height;
-    let particles = [];
-
-    function init() {
-      width = canvas.width = window.innerWidth;
-      height = canvas.height = window.innerHeight;
-      particles = [];
-      const particleCount = Math.floor((width * height) / 10000); // Responsive density
-
-      for (let i = 0; i < particleCount; i++) {
-        particles.push({
-          x: Math.random() * width,
-          y: Math.random() * height,
-          radius: Math.random() * 1.5,
-          vx: (Math.random() - 0.5) * 0.2, // Very slow drift
-          vy: (Math.random() - 0.5) * 0.2,
-          alpha: Math.random() * 0.5 + 0.1
-        });
-      }
-    }
-
-    function animate() {
-      ctx.clearRect(0, 0, width, height);
-
-      particles.forEach(p => {
-        p.x += p.vx;
-        p.y += p.vy;
-
-        // Wrap around
-        if (p.x < 0) p.x = width;
-        if (p.x > width) p.x = 0;
-        if (p.y < 0) p.y = height;
-        if (p.y > height) p.y = 0;
-
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(255, 255, 255, ${p.alpha})`;
-        ctx.fill();
-        
-        // Subtle twinkle
-        if (Math.random() > 0.99) {
-          p.alpha = Math.random() * 0.5 + 0.1;
-        }
-      });
-
-      requestAnimationFrame(animate);
-    }
-
-    window.addEventListener('resize', init);
-    init();
-    animate();
-  </script>
 </body>
 </html>
