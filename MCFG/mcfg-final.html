@@ -185,7 +185,7 @@ nav.visible { opacity: 1; }
 .hero-h1 .h1-gold { color: var(--accent-light); display: block; font-style: italic; }
 .hero-bottom { padding: 48px 56px 64px; display: grid; grid-template-columns: 55fr 45fr; gap: 0; }
 .hero-bottom-left { padding-right: 0; display: flex; flex-direction: column; justify-content: flex-end; border-right: 1px solid var(--light-border); }
-.hero-mission { font-size: 18px; font-weight: 300; line-height: 1.75; color: var(--mid); margin-bottom: 36px; max-width: 480px; }
+.hero-mission { font-size: 22px; font-weight: 300; line-height: 1.75; color: var(--mid); margin-bottom: 36px; max-width: 480px; }
 .hero-mission strong { font-weight: 500; color: var(--plum); }
 .hero-actions { display: flex; gap: 20px; align-items: center; }
 .btn-primary { display: inline-flex; align-items: center; gap: 10px; padding: 15px 32px; background: var(--plum); color: var(--cream); font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; transition: all 0.25s; }
@@ -264,7 +264,7 @@ nav.visible { opacity: 1; }
 .mission-kicker::before { content: ''; display: block; width: 20px; height: 1px; background: var(--accent); }
 .mission-quote { font-family: var(--font-headline); font-weight: 700; font-size: clamp(22px, 2.5vw, 34px); font-weight: 400; color: var(--cream); line-height: 1.35; }
 .mission-quote em { font-style: italic; color: var(--accent-light); }
-.mission-body { font-size: 15px; line-height: 1.9; color: rgba(255,255,255,0.55); font-weight: 300; }
+.mission-body { font-size: 19px; line-height: 1.9; color: rgba(255,255,255,0.55); font-weight: 300; }
 
 /* ════════════════════════════════
    PILLARS
@@ -281,7 +281,7 @@ nav.visible { opacity: 1; }
 .pillar:hover .pillar-accent { transform: scaleX(1); }
 .pillar-num { font-family: var(--font-headline); font-weight: 700; font-size: 13px; font-style: italic; color: var(--accent); margin-bottom: 20px; display: block; }
 .pillar-title { font-size: 17px; font-weight: 500; color: var(--plum); margin-bottom: 16px; }
-.pillar-body { font-size: 14px; line-height: 1.85; color: var(--mid); font-weight: 300; }
+.pillar-body { font-size: 18px; line-height: 1.85; color: var(--mid); font-weight: 300; }
 
 /* ════════════════════════════════
    PROJECTS
@@ -296,7 +296,7 @@ nav.visible { opacity: 1; }
 .p-num { font-family: var(--font-headline); font-weight: 700; font-style: italic; font-size: 16px; color: var(--accent-border); transition: color 0.2s; }
 .project-row:hover .p-num { color: var(--accent); }
 .p-name { font-family: var(--font-headline); font-weight: 700; font-size: 28px; font-weight: 400; color: var(--plum); margin-bottom: 4px; }
-.p-desc { font-size: 13px; color: var(--mid); line-height: 1.6; font-weight: 300; max-width: 520px; }
+.p-desc { font-size: 17px; color: var(--mid); line-height: 1.6; font-weight: 300; max-width: 520px; }
 .p-type { font-size: 10px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--mid); white-space: nowrap; }
 .p-status { text-align: right; white-space: nowrap; }
 .status-pill { display: inline-block; padding: 6px 16px; border-radius: 40px; font-size: 10px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; border: 1px solid; }
@@ -318,7 +318,7 @@ nav.visible { opacity: 1; }
 ════════════════════════════════ */
 .board-page { padding: 100px 56px; }
 .board-intro { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: end; margin-bottom: 80px; }
-.board-intro-right p { font-size: 15px; line-height: 1.9; color: var(--mid); font-weight: 300; }
+.board-intro-right p { font-size: 19px; line-height: 1.9; color: var(--mid); font-weight: 300; }
 
 .board-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
 .board-card {
@@ -363,11 +363,11 @@ nav.visible { opacity: 1; }
 .board-body { padding: 32px; }
 .board-name { font-family: var(--font-headline); font-weight: 700; font-size: 22px; font-weight: 400; color: var(--plum); margin-bottom: 4px; line-height: 1.2; }
 .board-title { font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 20px; }
-.board-bio { font-size: 13px; line-height: 1.85; color: var(--mid); font-weight: 300; }
+.board-bio { font-size: 17px; line-height: 1.85; color: var(--mid); font-weight: 300; }
 
 /* Founder card — spans full width differently */
 .board-card.founder { grid-column: 1 / -1; }
-.board-card.founder .board-portrait { height: 180px; background: var(--ink); }
+.board-card.founder .board-portrait { height: 180px; background: var(--accent); }
 .board-card.founder .board-portrait::after {
   content: '';
   position: absolute; inset: 0;
@@ -377,7 +377,7 @@ nav.visible { opacity: 1; }
 .board-card.founder .board-portrait { height: 100%; min-height: 280px; }
 .board-card.founder .board-body { padding: 48px; display: flex; flex-direction: column; justify-content: center; }
 .board-card.founder .board-name { font-size: 32px; margin-bottom: 6px; }
-.board-card.founder .board-bio { font-size: 14px; max-width: 640px; }
+.board-card.founder .board-bio { font-size: 18px; max-width: 640px; }
   
   /* Contributors Section */
   .contributors-section { margin-top: 120px; border-top: 1px solid var(--light-border); padding-top: 80px; }
@@ -398,7 +398,7 @@ nav.visible { opacity: 1; }
 .cta-divider-line { background: rgba(255,255,255,0.1); }
 .cta-col h3 { font-family: var(--font-headline); font-weight: 700; font-size: clamp(26px, 3vw, 38px); font-weight: 400; color: var(--cream); line-height: 1.2; margin-bottom: 16px; }
 .cta-col h3 em { font-style: italic; color: var(--accent-light); }
-.cta-col p { font-size: 14px; line-height: 1.9; color: rgba(255,255,255,0.5); font-weight: 300; margin-bottom: 40px; }
+.cta-col p { font-size: 18px; line-height: 1.9; color: rgba(255,255,255,0.5); font-weight: 300; margin-bottom: 40px; }
 .btn-gold { display: inline-flex; align-items: center; gap: 10px; align-self: flex-start; padding: 16px 32px; background: var(--accent); color: var(--plum-deep); font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; transition: background 0.2s, transform 0.2s; }
 .btn-gold:hover { background: var(--accent-light); transform: translateY(-2px); }
 .btn-outline-cream { display: inline-flex; align-items: center; gap: 10px; align-self: flex-start; padding: 16px 32px; border: 1px solid rgba(255,255,255,0.25); color: var(--cream); font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; transition: all 0.2s; }
@@ -434,7 +434,7 @@ footer { background: var(--plum-deep); padding: 56px; display: flex; justify-con
 .about-section h3::after { content: ''; position: absolute; bottom: -1px; left: 0; width: 0; height: 1px; background: var(--accent); transition: width 0.8s cubic-bezier(0.76, 0, 0.24, 1); transition-delay: 0.3s; }
 .about-section.in h3::after { width: 100%; }
 
-.about-content { font-size: 18px; line-height: 1.95; color: var(--mid); font-weight: 300; }
+.about-content { font-size: 22px; line-height: 1.95; color: var(--mid); font-weight: 300; }
 .about-content p { margin-bottom: 28px; opacity: 0; transform: translateY(15px); transition: opacity 0.8s ease, transform 0.8s ease; }
 .about-section.in .about-content p { opacity: 1; transform: translateY(0); }
 .about-section.in .about-content p:nth-child(1) { transition-delay: 0.1s; }
@@ -456,7 +456,7 @@ footer { background: var(--plum-deep); padding: 56px; display: flex; justify-con
 .ecosystem-card::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 3px; background: var(--accent); transition: width 0.4s ease; }
 .ecosystem-card:hover::after { width: 100%; }
 .ecosystem-card h4 { font-family: var(--font-headline); font-weight: 700; font-size: 26px; color: var(--plum); margin-bottom: 16px; }
-.ecosystem-card p { font-size: 15px; line-height: 1.8; color: var(--mid); margin-bottom: 0; }
+.ecosystem-card p { font-size: 19px; line-height: 1.8; color: var(--mid); margin-bottom: 0; }
 
 .about-quote-block { background: var(--plum); color: var(--cream); padding: 100px 72px; text-align: center; position: relative; overflow: hidden; border-radius: 4px; }
 .about-quote-block::before {
@@ -862,7 +862,7 @@ footer { background: var(--plum-deep); padding: 56px; display: flex; justify-con
       <div class="board-intro">
         <div class="board-intro-left reveal">
           <div class="section-eyebrow">Leadership</div>
-          <h2 class="section-heading reveal d1" style="margin-bottom:0;">The people who said yes <em style="font-family:'DM Serif Display',serif;font-style:italic;">first.</em></h2>
+          <h2 class="section-heading reveal d1" style="margin-bottom:0;">The people who said yes <em style="font-family:'DM Serif Display',serif;font-style:italic;color:var(--accent);">first.</em></h2>
         </div>
         <div class="board-intro-right reveal d2">
           <p>Our board brings together expertise in public health, community organizing, technology, and advocacy — with roots in the communities we serve. Credibility and community aren't opposites here. They're the same thing.</p>
@@ -873,8 +873,8 @@ footer { background: var(--plum-deep); padding: 56px; display: flex; justify-con
       <div class="board-grid" style="margin-bottom:2px;">
         <div class="board-card founder reveal">
           <div class="board-layout">
-            <div class="board-portrait" style="background:var(--ink);">
-              <div class="board-monogram" style="font-size:120px;color:rgba(201,168,76,0.15);">B</div>
+            <div class="board-portrait" style="background:var(--accent);">
+              <div class="board-monogram" style="font-size:120px;color:rgba(255,255,255,0.2);">B</div>
               <div class="board-role-badge">
                 <span class="board-role-text">Founder &amp; Executive Director</span>
                 <span class="board-role-org">MCFG</span>
