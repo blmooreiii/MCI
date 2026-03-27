@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Marble Ceilings | Coming Soon</title>
+  <!-- Typekit for Snaga Uni Display -->
+  <link rel="stylesheet" href="https://use.typekit.net/olk5una.css">
+  <!-- Google Fonts: Gloock and Montserrat -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Gloock&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    /* Reset & Base Stylings */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #0b0b0b; /* Deep space black */
+      color: #7A6B73;
+      font-family: "neue-haas-grotesk-display", sans-serif;
+      overflow: hidden; /* Prevent scrolling, true full-page experience */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      width: 100vw;
+    }
+
+    /* Full viewport background canvas */
+    #space-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    /* Content Wrapper */
+    .content-wrapper {
+      position: relative;
+      z-index: 10;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    /* The "Marble Ceilings" Title */
+    .coming-soon-title {
+      font-family: "Gloock", serif;
+      font-weight: 400;
+      font-size: clamp(60px, 12vw, 160px);
+      line-height: 0.95;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      cursor: default;
+
+      /* Knight Rider Scan Effect */
+      /* Base: Brand purple #614051, Highlight: Jordan Blue #1E95B2 */
+      background: linear-gradient(
+        90deg, 
+        #614051 0%, 
+        #614051 45%, 
+        #1E95B2 50%, 
+        #614051 55%, 
+        #614051 100%
+      );
+      background-size: 200% 100%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      color: transparent; /* Fallback */
+
+      /* Animate the gradient position back and forth continuously */
+      animation: scanner 4s ease-in-out infinite alternate;
+    }
+
+    .coming-soon-title:hover {
+      transform: scale(1.04);
+      filter: drop-shadow(0 0 25px rgba(30, 149, 178, 0.3));
+      animation-duration: 2s; /* Faster scan on hover for "active" energy */
+    }
+
+    @keyframes scanner {
+      0% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    /* Subtle glow behind text to increase legibility in space */
+    .title-glow {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 80%;
+      height: 60%;
+      background: radial-gradient(ellipse at center, rgba(97, 64, 81, 0.15) 0%, transparent 60%);
+      z-index: -1;
+      pointer-events: none;
+      filter: blur(40px);
+    }
+
+    /* Subtitle: Coming Soon */
+    .coming-soon-subtitle {
+      margin-top: 48px;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: #1E95B2;
+      animation: pulse 3s infinite alternate ease-in-out;
+    }
+
+    .creative-group-subtitle {
+      font-family: "Gloock", serif;
+      font-size: clamp(14px, 2.5vw, 24px); /* Slightly smaller to allow more stretch */
+      font-weight: 400;
+      letter-spacing: 0.85em; /* Increased leading to stretch it out */
+      text-transform: uppercase;
+      color: #F2F3ED; /* Off-white */
+      margin-top: 12px; 
+      opacity: 0.95;
+      width: 100%;
+      text-align: center;
+      padding-left: 0.85em; /* Compensate for right-side letter-spacing to center better */
+    }
+
+    .coming-soon-quote {
+      margin-top: 32px;
+      font-family: "Montserrat", sans-serif;
+      font-size: clamp(14px, 1.8vw, 18px);
+      font-weight: 300;
+      line-height: 1.6;
+      color: rgba(255, 255, 255, 0.6);
+      max-width: 600px;
+      text-align: center;
+      letter-spacing: 0.05em;
+    }
+    .coming-soon-quote span {
+      display: block;
+      margin-top: 12px;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.4);
+    }
+
+    @keyframes pulse {
+      0% {
+        opacity: 0.3;
+      }
+      100% {
+        opacity: 1;
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+      }
+    }
+
+    /* Periodic Element Style (Bottom Left) */
+    .periodic-element {
+      position: fixed;
+      bottom: 40px;
+      left: 40px;
+      width: 76px;
+      height: 76px;
+      border: 1px solid rgba(30, 149, 178, 0.25);
+      background: rgba(97, 64, 81, 0.12); /* Glass effect with brand purple tint */
+      backdrop-filter: blur(12px) saturate(180%);
+      -webkit-backdrop-filter: blur(12px) saturate(180%);
+      z-index: 100;
+      padding: 8px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      color: #1E95B2;
+      box-shadow: 0 0 20px rgba(97, 64, 81, 0.2);
+      transition: all 0.4s ease;
+      cursor: default;
+    }
+    .periodic-element:hover {
+      border-color: rgba(30, 149, 178, 0.8);
+      background: rgba(97, 64, 81, 0.25);
+      box-shadow: 0 0 30px rgba(30, 149, 178, 0.2);
+      transform: translateY(-2px);
+    }
+
+    /* Mirrored Position for Link */
+    .link-element {
+      left: auto;
+      right: 40px;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .link-element:hover {
+      box-shadow: 0 0 40px rgba(30, 149, 178, 0.3);
+      filter: brightness(1.2);
+    }
+    .link-element .periodic-symbol {
+      font-size: 20px; /* Smaller to fit MCFG */
+      letter-spacing: 0.05em;
+      margin-top: 2px;
+    }
+    .periodic-number {
+      font-size: 9px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      opacity: 0.7;
+      font-family: "Montserrat", sans-serif;
+    }
+    .periodic-symbol {
+      font-family: "Gloock", serif;
+      font-size: 28px;
+      line-height: 1;
+      text-align: center;
+      margin-top: -2px;
+    }
+    .periodic-name {
+      font-size: 7.5px;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      text-align: center;
+      color: rgba(255, 255, 255, 0.5);
+      font-family: "Montserrat", sans-serif;
+    }
+
+    /* --- Start Experience Overlay (for Audio) --- */
+    #start-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 3000;
+      background: #000;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    #start-overlay.fade-out {
+      opacity: 0;
+      pointer-events: none;
+    }
+    .start-button {
+      background: none;
+      border: 1px solid #1E95B2;
+      color: #1E95B2;
+      padding: 16px 40px;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.4s ease;
+      font-family: "Montserrat", sans-serif;
+    }
+    .start-button:hover {
+      background: #1E95B2;
+      color: #000;
+      box-shadow: 0 0 30px rgba(30, 149, 178, 0.4);
+    }
+
+    /* --- Video Intro & Morph Transition --- */
+    #video-intro-container {
+      position: fixed;
+      inset: 0;
+      z-index: 2000;
+      background: #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none; /* Let clicks pass once it starts fading */
+    }
+    #video-intro-container video {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+    #video-intro-container.fade-out {
+      opacity: 0;
+    }
+
+    /* Initial state for main content to allow "morphing" in */
+    .content-wrapper, .periodic-element {
+      opacity: 0;
+      transition: opacity 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .content-wrapper.morph-in, .periodic-element.morph-in {
+      opacity: 1;
+    }
+    .periodic-element { transition-delay: 0.5s; } /* Elements appear slightly later for flow */
+
+    /* Responsive scaling for mobile */
+    @media (max-width: 768px) {
+      .coming-soon-title {
+        font-size: clamp(50px, 16vw, 90px);
+      }
+      .coming-soon-subtitle {
+        margin-top: 32px;
+        font-size: 11px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Start Experience Interaction Layer (to enable audio) -->
+  <div id="start-overlay">
+    <button class="start-button" id="start-btn">Start Experience</button>
+  </div>
+
+  <!-- Cinematic Video Intro Overlay -->
+  <div id="video-intro-container">
+    <video id="intro-video" muted playsinline>
+      <source src="sneaker_4k.mp4" type="video/mp4">
+    </video>
+  </div>
+
+  <!-- Subtle Futuristic Space Animated Background -->
+  <canvas id="space-bg"></canvas>
+
+  <main class="content-wrapper">
+    <div class="title-glow"></div>
+    <!-- Marble Ceilings on two lines -->
+    <h1 class="coming-soon-title">Marble<br>Ceilings</h1>
+    <div class="creative-group-subtitle">Creative Group</div>
+    <div class="coming-soon-subtitle">Coming Soon Summer 2026</div>
+    <div class="coming-soon-quote">
+      "When creative people are given a stage they have the power to advance humanity"
+      <span>— Pharrell Williams</span>
+    </div>
+  </main>
+
+  <div class="periodic-element">
+    <div class="periodic-number">01</div>
+    <div class="periodic-symbol">CR</div>
+    <div class="periodic-name">Creativity</div>
+  </div>
+
+  <a href="MCFG/mcfg-final.html" class="periodic-element link-element">
+    <div class="periodic-number">02</div>
+    <div class="periodic-symbol">MCFG</div>
+    <div class="periodic-name">Non-Profit</div>
+  </a>
+
+  <script>
+    /* HTML5 Canvas Space Particle System */
+    const canvas = document.getElementById('space-bg');
+    const ctx = canvas.getContext('2d');
+    
+    let width, height;
+    let stars = [];
+    const NUM_STARS = 300;
+
+    // Handle Resize
+    function resize() {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resize);
+    resize();
+
+    // Initialize stars array
+    // Each star has an x, y coordinate and a z-depth
+    for (let i = 0; i < NUM_STARS; i++) {
+      stars.push({
+        x: (Math.random() - 0.5) * width * 2,
+        y: (Math.random() - 0.5) * height * 2,
+        z: Math.random() * width,
+        baseSize: Math.random() * 1.5 + 0.5,
+        velocity: Math.random() * 0.8 + 0.2 // Speed multiplier
+      });
+    }
+
+    // Animation Loop
+    function animate() {
+      // Clear with slight trailing effect for motion blur
+      ctx.fillStyle = 'rgba(11, 11, 11, 0.8)';
+      ctx.fillRect(0, 0, width, height);
+
+      const cx = width / 2;
+      const cy = height / 2;
+
+      for (let i = 0; i < NUM_STARS; i++) {
+        let star = stars[i];
+
+        // Move star closer to the viewer (decrease z-depth)
+        star.z -= star.velocity;
+
+        // Reset star if it passes the viewer
+        if (star.z <= 0) {
+          star.z = width;
+          star.x = (Math.random() - 0.5) * width * 2;
+          star.y = (Math.random() - 0.5) * height * 2;
+        }
+
+        // 3D to 2D Projection mapping
+        const perspective = width / star.z;
+        const px = cx + star.x * perspective;
+        const py = cy + star.y * perspective;
+
+        // Draw star only if within viewport bounds
+        if (px > 0 && px < width && py > 0 && py < height) {
+          // Size scaling based on perspective depth
+          const renderSize = star.baseSize * perspective * 0.3;
+          
+          // Fade alpha based on distance (farther = dimmer)
+          const alphaFade = Math.max(0, 1 - (star.z / width));
+
+          ctx.fillStyle = `rgba(255, 255, 255, ${alphaFade * 0.7})`;
+          
+          ctx.beginPath();
+          ctx.arc(px, py, renderSize, 0, Math.PI * 2);
+          ctx.fill();
+        }
+      }
+
+      requestAnimationFrame(animate);
+    }
+
+    // Start Animation
+    animate();
+
+    /* --- Video Intro -> Morph Logic --- */
+    const introVideo = document.getElementById('intro-video');
+    const introContainer = document.getElementById('video-intro-container');
+    const startOverlay = document.getElementById('start-overlay');
+    const startBtn = document.getElementById('start-btn');
+    const content = document.querySelector('.content-wrapper');
+    const periodics = document.querySelectorAll('.periodic-element');
+
+    // Handle Start Experience
+    startBtn.addEventListener('click', () => {
+      startOverlay.classList.add('fade-out');
+      introVideo.muted = false; // Enable audio
+      introVideo.currentTime = 0;
+      introVideo.play().catch(e => console.log('Video play error:', e));
+      
+      setTimeout(() => {
+        startOverlay.style.display = 'none';
+      }, 1200);
+    });
+
+    function triggerMorph() {
+      introContainer.classList.add('fade-out');
+      content.classList.add('morph-in');
+      periodics.forEach(el => el.classList.add('morph-in'));
+      
+      // Clean up the overlay after transition to improve performance
+      setTimeout(() => {
+        introContainer.style.display = 'none';
+      }, 1500);
+    }
+
+    // When the video ends, trigger the morph/fade
+    introVideo.onended = triggerMorph;
+
+    // Optional: Morph slightly before the actual end for a smoother blend
+    introVideo.ontimeupdate = () => {
+      if (introVideo.duration - introVideo.currentTime < 1.2) {
+        triggerMorph();
+        introVideo.ontimeupdate = null; // Prevent multi-triggering
+      }
+    };
+  </script>
+</body>
+</html>
