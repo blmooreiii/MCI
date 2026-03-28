@@ -482,15 +482,25 @@ footer { background: var(--plum-deep); padding: 56px; display: flex; justify-con
 @media (max-width: 1024px) {
   nav { padding: 18px 24px; left: 0; transform: none; width: 100%; max-width: none; }
   .nav-links {
-    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(250, 247, 242, 0.85); /* Glass cream */
-    backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-    display: none; flex-direction: column; align-items: center; 
-    justify-content: flex-start; padding-top: 120px;
+    position: fixed; top: 0; right: 0; width: 300px; height: 100vh;
+    background: rgba(250, 247, 242, 0.92); /* Glass cream */
+    backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+    display: flex; flex-direction: column; align-items: flex-start; 
+    justify-content: flex-start; padding: 120px 40px;
     gap: 32px; z-index: 1000;
+    transform: translateX(100%);
+    transition: transform 0.4s cubic-bezier(0.2, 1, 0.3, 1);
+    border-left: 1px solid var(--light-border);
   }
-  .nav-links.active { display: flex !important; opacity: 1; visibility: visible; }
-  .nav-links a { font-size: 20px; color: var(--plum); font-weight: 500; }
+  .nav-links.active { transform: translateX(0); }
+  .nav-overlay {
+    position: fixed; inset: 0; background: rgba(11, 6, 9, 0.4);
+    backdrop-filter: blur(4px); z-index: 999;
+    opacity: 0; pointer-events: none; transition: opacity 0.4s;
+  }
+  .nav-overlay.active { opacity: 1; pointer-events: auto; }
+  .nav-links a { font-size: 24px; color: var(--plum); font-weight: 500; width: 100%; border-bottom: 1px solid rgba(97,64,81,0.08); padding-bottom: 12px; }
+  .nav-links a.active::after { bottom: 8px; }
   .nav-cta { display: none !important; }
   .nav-toggle { display: block !important; }
 
@@ -579,6 +589,7 @@ footer { background: var(--plum-deep); padding: 56px; display: flex; justify-con
 <!-- ══════════════════════════════
      SITE
 ══════════════════════════════ -->
+<div class="nav-overlay" id="nav-overlay" onclick="toggleMobileMenu()"></div>
 <nav id="main-nav">
   <div class="nav-logo">
     <div class="nav-logo-mark"><span>M</span></div>
@@ -1355,11 +1366,13 @@ function initReveal() {
 ══════════════════════════════════════════ */
 const navToggle = document.getElementById('nav-toggle');
 const navLinks = document.getElementById('nav-links');
+const navOverlay = document.getElementById('nav-overlay');
 
 function toggleMobileMenu() {
   if (window.innerWidth > 1024) return;
   navToggle.classList.toggle('active');
   navLinks.classList.toggle('active');
+  navOverlay.classList.toggle('active');
   document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
 }
 
