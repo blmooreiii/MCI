@@ -159,10 +159,9 @@
     }
 
     /* Grid Positioning & Colored Borders */
-    /* Grid Positioning & Colored Borders */
-    .el-kn { grid-column: 2; grid-row: 1; border-top: 3px solid var(--jordan-blue); border-bottom: 1px solid rgba(30,149,178,0.2); animation: popIn 0.8s forwards 1s; }
+    .el-kn { grid-column: 2; grid-row: 1; border-top: 3px solid var(--jordan-blue); border-bottom: 1px solid rgba(30,149,178,0.2); animation: flipIn 0.8s forwards 1s; }
     
-    .el-cr { grid-column: 1; grid-row: 2; border-top: 3px solid #dba9a9; border-bottom: 1px solid rgba(219,169,169,0.2); animation: popIn 0.8s forwards 1.2s; }
+    .el-cr { grid-column: 1; grid-row: 2; border-top: 3px solid #dba9a9; border-bottom: 1px solid rgba(219,169,169,0.2); animation: flipIn 0.8s forwards 1.2s; }
     
     /* Center MCFG Element (Maintains its own style) */
     .el-mcfg {
@@ -170,7 +169,7 @@
       grid-row: 2;
       background: rgba(30, 149, 178, 0.05);
       border: 1px solid rgba(30, 149, 178, 0.4);
-      animation: popInCenter 1.2s forwards 1.5s;
+      animation: flipInCenter 1.2s forwards 1.5s;
       z-index: 10;
     }
 
@@ -195,11 +194,11 @@
       -webkit-text-fill-color: transparent;
     }
 
-    .el-te { grid-column: 3; grid-row: 2; border-top: 3px solid #aab5d1; border-bottom: 1px solid rgba(170,181,209,0.2); animation: popIn 0.8s forwards 1.3s; }
+    .el-te { grid-column: 3; grid-row: 2; border-top: 3px solid #aab5d1; border-bottom: 1px solid rgba(170,181,209,0.2); animation: flipIn 0.8s forwards 1.3s; }
     
-    .el-sp { grid-column: 2; grid-row: 3; border-top: 3px solid #cbad9b; border-bottom: 1px solid rgba(203,173,155,0.2); animation: popIn 0.8s forwards 1.4s; }
-    .el-co { grid-column: 3; grid-row: 3; border-top: 3px solid var(--eggplant); border-bottom: 1px solid rgba(97,64,81,0.2); animation: popIn 0.8s forwards 1.5s; }
-    .el-sa { grid-column: 4; grid-row: 3; border-top: 3px solid #e3c766; border-bottom: 1px solid rgba(227,199,102,0.2); animation: popIn 0.8s forwards 1.6s; }
+    .el-sp { grid-column: 2; grid-row: 3; border-top: 3px solid #cbad9b; border-bottom: 1px solid rgba(203,173,155,0.2); animation: flipIn 0.8s forwards 1.4s; }
+    .el-co { grid-column: 3; grid-row: 3; border-top: 3px solid var(--eggplant); border-bottom: 1px solid rgba(97,64,81,0.2); animation: flipIn 0.8s forwards 1.5s; }
+    .el-sa { grid-column: 4; grid-row: 3; border-top: 3px solid #e3c766; border-bottom: 1px solid rgba(227,199,102,0.2); animation: flipIn 0.8s forwards 1.6s; }
 
     /* Bottom Date Strip */
     /* Bottom Date Strip */
@@ -235,16 +234,18 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    @keyframes popIn {
-      0% { opacity: 0; transform: scale(0.85); }
-      70% { opacity: 1; transform: scale(1.02); }
-      100% { opacity: 1; transform: scale(1); }
+    @keyframes flipIn {
+      0% { opacity: 0; transform: perspective(1000px) rotateY(90deg) scale(0.95); }
+      60% { opacity: 1; transform: perspective(1000px) rotateY(-10deg) scale(1.02); }
+      80% { opacity: 1; transform: perspective(1000px) rotateY(5deg) scale(1); }
+      100% { opacity: 1; transform: perspective(1000px) rotateY(0deg) scale(1); }
     }
 
-    @keyframes popInCenter {
-      0% { opacity: 0; transform: scale(0.9); }
-      70% { opacity: 1; transform: scale(1.05); box-shadow: 0 0 60px var(--eggplant-glow); }
-      100% { opacity: 1; transform: scale(1); }
+    @keyframes flipInCenter {
+      0% { opacity: 0; transform: perspective(1000px) rotateY(90deg) scale(0.9); box-shadow: none; }
+      60% { opacity: 1; transform: perspective(1000px) rotateY(-10deg) scale(1.05); box-shadow: 0 0 60px var(--eggplant-glow); }
+      80% { opacity: 1; transform: perspective(1000px) rotateY(5deg) scale(1); box-shadow: 0 0 40px var(--eggplant-glow); }
+      100% { opacity: 1; transform: perspective(1000px) rotateY(0deg) scale(1); box-shadow: 0 0 40px var(--eggplant-glow); }
     }
 
     /* Responsive adjustments */
@@ -258,11 +259,9 @@
       .element-top-row { font-size: 8px; top: 4px; left: 4px; right: 4px; }
       .element-name { font-size: 7px; }
       
-      @keyframes popInCenter {
-        0% { opacity: 0; transform: scale(0.9); }
-        100% { opacity: 1; transform: scale(1); }
-      }
-        100% { opacity: 1; transform: scale(1); }
+      @keyframes flipInCenter {
+        0% { opacity: 0; transform: perspective(1000px) rotateY(90deg) scale(0.9); }
+        100% { opacity: 1; transform: perspective(1000px) rotateY(0deg) scale(1); }
       }
     }
 
