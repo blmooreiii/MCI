@@ -217,7 +217,8 @@ nav.visible { opacity: 1; }
 }
 /* Stat anchored in cell 1 */
 .mosaic-stat {
-  position: absolute; bottom: 32px; left: 32px;
+  position: absolute; inset: 0; padding: 32px;
+  display: flex; flex-direction: column; justify-content: flex-end;
 }
 .mosaic-stat-num {
   font-family: var(--font-headline); font-weight: 700;
@@ -245,9 +246,10 @@ nav.visible { opacity: 1; }
 }
 .mosaic-project-item {
   display: flex; align-items: center; justify-content: space-between;
-  padding: 10px 0; border-top: 1px solid rgba(255,255,255,0.08);
+  padding: 12px 0; border-top: 1px solid rgba(255,255,255,0.08);
   cursor: pointer; transition: padding-left 0.2s;
 }
+.mosaic-project-item:last-child { padding-bottom: 0px; }
 .mosaic-project-item:hover { padding-left: 4px; }
 .mosaic-project-item:first-child { border-top: none; }
 .mosaic-project-name { font-size: 15px; font-weight: 500; color: rgba(255,255,255,0.9); }
