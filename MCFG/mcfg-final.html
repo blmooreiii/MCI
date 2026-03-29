@@ -217,7 +217,11 @@ nav.visible { opacity: 1; }
 }
 /* Stat anchored in cell 1 */
 .mosaic-stat {
-  position: absolute; bottom: 32px; left: 32px; right: 32px;
+  position: absolute; top: 32px; left: 32px; right: 32px;
+}
+/* Explicit bottom anchoring for Cell 3 to match projects */
+.mosaic-cell:nth-child(3) .mosaic-stat {
+  top: auto; bottom: 32px;
 }
 .mosaic-stat-num {
   font-family: var(--font-headline); font-weight: 700;
